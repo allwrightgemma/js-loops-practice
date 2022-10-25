@@ -5,14 +5,25 @@
 // delete form the array - use the index and splice method
 
 let input = prompt("What would you like to do?");
+const todoList = ["make bed", "stretch"];
 
-while (input !== "quit") {
-  prompt("What would you like to do?");
+while (input !== "quit" && input !== "q") {
+  if (input === "list") {
+    console.log("********");
+    for (let i = 0; i < todoList.length; i++) {
+      console.log(`${i}: ${todoList[i]}`);
+    }
+    console.log("********");
+  } else if (input === "new") {
+    const newTodo = prompt("What would you like to add?");
+    todoList.push(newTodo);
+    console.log(`${newTodo} has been added to the list`);
+  } else if (input === "delete") {
+    const removeItem = prompt("What number index do you want to delete?");
+    const deleted = todoList.splice(removeItem, 1);
+    console.log(`${deleted[0]} has been deleted`);
+  }
+
+  input = prompt("What would you like to do?");
 }
 console.log("You have quit the app");
-
-// if (input === "new") {
-//   let todo = prompt("What would you like to add?");
-//   let list = list.push("todo");
-//   console.log(list);
-// }
